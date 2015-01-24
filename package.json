@@ -20,6 +20,8 @@
     "chai": "^1.10.0",
     "ejs": "^2.2.3",
     "passport-github": "^0.1.5",
-    "passport": "^0.2.1"
+    "passport": "^0.2.1",
+    "mongodb": "^1.4.29",
+    "mongoose": "^3.8.21"
   }
 }
