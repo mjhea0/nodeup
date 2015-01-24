@@ -7,8 +7,7 @@ var express = require('express'),
     passport = require('passport'),
     util = require('util'),
     GitHubStrategy = require('passport-github').Strategy,
-    config = require('./_config'),
-    config = require('./_config');
+    config = require('./config/_config');
 
 var app = express();
 
