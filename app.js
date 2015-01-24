@@ -8,14 +8,16 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
     util = require('util'),
+    swig = require('swig'),
     GitHubStrategy = require('passport-github').Strategy,
     config = require('./config/_config');
 
 var app = express();
 
 // view engine setup
+app.engine('html', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 
 // passport
 passport.serializeUser(function(user, done) {
