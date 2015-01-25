@@ -1,6 +1,6 @@
 # Nodeup
 
-An app to manage daily coding warmup exercises. Powered by Node.
+An app to manage daily coding warmup exercises. Powered by Node. Inspired by DBC's Socrates.
 
 ## User Workflow
 
