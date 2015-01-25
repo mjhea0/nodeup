@@ -25,13 +25,7 @@ var app = express();
 
 // connect to the database
 mongoose.connect('mongodb://localhost/nodeup');
-
-// create a user model
-var User = mongoose.model('user', {
-    oauthID: Number,
-    name: String,
-    created: Date
-});
+var User = require('./user.js');
 
 // view engine setup for templates
 app.engine('html', swig.renderFile);

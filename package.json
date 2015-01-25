@@ -5,7 +5,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "test": "make test"
   },
   "dependencies": {
     "express": "~4.9.0",
@@ -26,6 +27,8 @@
     "express-session": "^1.10.1",
     "method-override": "^2.3.1",
     "swig": "^1.4.2",
-    "jinjs": "^0.3.6"
+    "jinjs": "^0.3.6",
+    "mocha": "^2.1.0",
+    "should": "^4.6.1"
   }
 }
