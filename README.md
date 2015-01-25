@@ -14,3 +14,4 @@ An app to manage daily coding warmup exercises. Powered by Node. Inspired by DBC
 
 1. Convert to SQL/Postgres
 1. Refactor app.js
+1. CSS/JS minification for production
