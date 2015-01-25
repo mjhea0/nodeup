@@ -11,7 +11,11 @@ var express = require('express'),
     util = require('util'),
     swig = require('swig'),
     GitHubStrategy = require('passport-github').Strategy,
-    config = require('./config/_config');
+    flash = require('connect-flash'),
+    mongoose = require('mongoose');
+
+// config
+var config = require('./config/_config');
 
 // routes
 var routes = require('./routes/index');
@@ -19,32 +23,50 @@ var routes = require('./routes/index');
 // create express instance
 var app = express();
 
+// connect to the database
+mongoose.connect('mongodb://localhost/nodeup');
+
+// create a user model
+var User = mongoose.model('user', {
+    oauthID: Number,
+    name: String,
+    created: Date
+});
+
 // view engine setup for templates
 app.engine('html', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-// passport
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
 
-passport.deserializeUser(function(obj, done) {
-    done(null, obj);
-});
-
+// passport github strategy
 passport.use(new GitHubStrategy({
     clientID: config.github_client_id,
     clientSecret: config.github_client_secret,
     callbackURL: config.github_callback_url
-  },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function () {
-        // check database for user (to do)
-        return done(null, profile);
+},
+function(accessToken, refreshToken, profile, done) {
+    User.findOne({ oauthID: profile.id }, function(err, user) {
+        if(err) { console.log(err); }
+        if (!err && user !== null) {
+            done(null, user);
+        } else {
+            user = new User({
+                oauthID: profile.id,
+                name: profile.displayName,
+                created: Date.now()
+            });
+            user.save(function(err) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log("saving user ...");
+                    done(null, user);
+                }
+            });
+        }
     });
-  }
-));
+}));
 
 // middeleware
 app.use(logger('dev'));
@@ -52,6 +74,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(methodOverride());
+app.use(flash());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -60,6 +83,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+// serialize and deserialize
+passport.serializeUser(function(user, done) {
+    console.log('serializeUser: ' + user._id);
+    done(null, user._id);
+});
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user){
+        console.log(user);
+        if(!err) done(null, user);
+        else done(err, null);
+    });
+});
 
 // main routes
 app.use('/', routes);
