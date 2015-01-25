@@ -7,6 +7,10 @@ router.get('/', function(req, res) {
     res.render('index', { user: req.user });
 });
 
+router.get('/test-problem', ensureAuthenticated, function(req, res){
+    res.render('test-problem', { user: req.user });
+});
+
 router.get('/account', ensureAuthenticated, function(req, res){
     res.render('account', { user: req.user });
 });
