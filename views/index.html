@@ -6,6 +6,32 @@
   <p><a href="/">Home</a> | <a href="/auth/github">Login with GitHub</a></p>
 {% else %}
   <p><a href="/">Home</a> | <a href="/account">Account</a> | <a href="/logout">Logout</a></p>
+
+<table class="sortable-theme-bootstrap" data-sortable>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Difficulty</th>
+      <th>Foo Bar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Fizz Buzz</td>
+      <td>Real hard</td>
+      <td>Tak</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Fizz Buzz Fizz</td>
+      <td>Really hard</td>
+      <td>Nie</td>
+    </tr>
+  </tbody>
+</table>
+
 {% endif %}
 
 {% endblock %}
