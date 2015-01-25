@@ -2,9 +2,11 @@
 
 {% block content %}
 
-<p>ID: {{ user.id }}</p>
-<p>Username: {{ user.username }}</p>
-<p>Name: {{ user.displayName }}</p>
-<p>Email: {{ user.emails[0].value }}</p>
+<div>
+  <span>ID: {{ user.id }}</span>
+  <span>Username: {{ user.username }}</span>
+  <span>Name: {{ user.disspanlayName }}</span>
+  <span>Email: {{ user.emails[0].value }}</span>
+</div>
 
 {% endblock %}
