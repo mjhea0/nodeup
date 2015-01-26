@@ -14,6 +14,11 @@ var express = require('express'),
     flash = require('connect-flash'),
     mongoose = require('mongoose');
 
+var swig = require('swig'),
+  extras = require('swig-extras'),
+  swig = new swig.Swig();
+extras.useTag(swig, 'markdown');
+
 // config
 var config = require('./config/_config');
 
