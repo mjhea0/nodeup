@@ -16,3 +16,5 @@ An app to manage daily coding warmup exercises. Powered by Node. Inspired by DBC
 1. Refactor app.js
 1. CSS/JS minification for production
 1. Theme/Make pretty
+1. Testing
+1. Test coverage
