@@ -30,6 +30,7 @@
     "jinjs": "^0.3.6",
     "mocha": "^2.1.0",
     "should": "^4.6.1",
-    "swig-extras": "0.0.1"
+    "swig-extras": "0.0.1",
+    "request": "^2.51.0"
   }
 }
