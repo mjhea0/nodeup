@@ -35,5 +35,9 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/');
 }
 
+router.post('/github', function(req, res){
+  res.status(200).send('hi!');
+});
+
 
 module.exports = router;
