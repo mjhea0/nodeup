@@ -22,3 +22,7 @@ request(options, function (err, res, body) {
   var statusCode = res.statusCode;
   console.log(body);
 });
+
+var test = "hi from a module!";
+
+module.exports = test;

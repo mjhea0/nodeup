@@ -1,6 +1,7 @@
 var express = require('express'),
     router = express.Router(),
     passport = require('passport');
+    gist = require('../helpers/gist');
 
 
 router.get('/', function(req, res) {
@@ -36,7 +37,7 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.post('/github', function(req, res){
-  res.status(200).send('hi!');
+  res.status(200).send(gist);
 });
 
 
