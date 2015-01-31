@@ -13,16 +13,20 @@ var options = {
   url: url
 };
 
-request(options, function (err, res, body) {
-  if (err) {
-    inspect(err, 'error posting json');
-    return;
-  }
-  var headers = res.headers;
-  var statusCode = res.statusCode;
-  console.log(body);
-});
 
-var test = "hi from a module!";
+var test = function createGist () {
+
+  request(options, function (err, res, body) {
+    if (err) {
+      inspect(err, 'error posting json');
+      return;
+    }
+    var headers = res.headers;
+    var statusCode = res.statusCode;
+    console.log(body);
+  });
+
+};
+
 
 module.exports = test;

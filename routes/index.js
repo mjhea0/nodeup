@@ -37,7 +37,7 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.post('/github', function(req, res){
-  res.status(200).send(gist);
+  res.status(200).send(gist());
 });
 
 
