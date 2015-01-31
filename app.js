@@ -45,6 +45,7 @@ passport.use(new GitHubStrategy({
     callbackURL: config.github_callback_url
 },
 function(accessToken, refreshToken, profile, done) {
+    // console.log(profile);
     User.findOne({ oauthID: profile.id }, function(err, user) {
         if(err) { console.log(err); }
         if (!err && user !== null) {
