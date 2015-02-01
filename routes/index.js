@@ -38,6 +38,9 @@ function ensureAuthenticated(req, res, next) {
 
 router.post('/github', function(req, res){
 
+  console.log(req);
+  // body: { data: 'ca266f402a7a90a2e785' }
+
   var request = require('request');
   var url = 'https://api.github.com/gists/ca266f402a7a90a2e785';
   var authToken = req.user.token;
