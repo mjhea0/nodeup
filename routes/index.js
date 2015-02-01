@@ -37,7 +37,27 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.post('/github', function(req, res){
-  res.status(200).send(gist());
+
+  var request = require('request');
+  var url = 'https://api.github.com/gists/ca266f402a7a90a2e785';
+  var authToken = req.user.token;
+
+  var options = {
+    method: 'get',
+    json: true,
+    url: url,
+    headers : {
+      'User-Agent': 'test',
+      'Authorization': 'token '+authToken // do not hard code!
+    }
+  };
+
+  request(options, url, function(err, resp, body) {
+     // var body = JSON.parse(body);
+     console.log(body.url);
+     res.status(200).send({test:body.url});
+    });
+
 });
 
 

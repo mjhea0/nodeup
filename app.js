@@ -46,6 +46,7 @@ passport.use(new GitHubStrategy({
 },
 function(accessToken, refreshToken, profile, done) {
     // console.log(profile);
+    // console.log(accessToken);
     User.findOne({ oauthID: profile.id }, function(err, user) {
         if(err) { console.log(err); }
         if (!err && user !== null) {
@@ -54,7 +55,8 @@ function(accessToken, refreshToken, profile, done) {
             user = new User({
                 oauthID: profile.id,
                 name: profile.displayName,
-                created: Date.now()
+                created: Date.now(),
+                token: accessToken
             });
             user.save(function(err) {
                 if(err) {
