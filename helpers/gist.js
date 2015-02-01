@@ -1,16 +1,13 @@
 var request = require('request');
 
-var postData = {
-    description: 'test',
-    public: false,
-    files: {"test.txt":{"content":"String file contents"}}
-};
-var url = 'https://api.github.com/gists';
+var url = 'https://api.github.com/gists/ca266f402a7a90a2e785';
 var options = {
-  method: 'post',
-  body: postData,
+  method: 'get',
   json: true,
-  url: url
+  url: url,
+  headers : {
+    'User-Agent': 'test'
+  }
 };
 
 
@@ -30,19 +27,3 @@ var test = function createGist () {
 
 
 module.exports = test;
-
-// var Gisty = require('gisty');
-
-// var gist = new Gisty({
-//   username: 'meritt'
-// });
-
-// gist.fetch('1111422', function(error, gist) {
-//   if (error) {
-//     throw new Error(error);
-//   }
-
-//   for (filename in gist.files) {
-//     console.log(filename + "\n" + gist.files[filename].content + "\n\n");
-//   }
-// });
