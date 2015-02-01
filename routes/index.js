@@ -38,11 +38,10 @@ function ensureAuthenticated(req, res, next) {
 
 router.post('/github', function(req, res){
 
-  console.log(req);
-  // body: { data: 'ca266f402a7a90a2e785' }
-
   var request = require('request');
-  var url = 'https://api.github.com/gists/ca266f402a7a90a2e785';
+
+  var gistID = req.body.data;
+  var url = 'https://api.github.com/gists/'+gistID;
   var authToken = req.user.token;
 
   var options = {
@@ -58,7 +57,7 @@ router.post('/github', function(req, res){
   request(options, url, function(err, resp, body) {
      // var body = JSON.parse(body);
      console.log(body.url);
-     res.status(200).send({test:body.url});
+     res.status(200).send({url:body.url});
     });
 
 });

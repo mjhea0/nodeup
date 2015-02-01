@@ -40,14 +40,15 @@ $(function() {
           dataType: "json"
         });
 
-        request.done(function (test) {
+        request.done(function (data) {
           console.log('success!');
-          console.log(test);
+          console.log(data)
+          $('.answers').html(data.url);
         });
 
-        request.fail(function (test) {
+        request.fail(function (error) {
           console.log('fail!');
-          console.log(test);
+          console.log(error);  // need to handle this better
         });
     });
 
