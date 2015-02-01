@@ -21,6 +21,7 @@ $(function() {
         console.log("cancel button clicked!"); // sanity check
         $('.submit-answer-btn').show();
         $('.gist-input-form').hide();
+        $('.input-box').val("");
     });
 
     // click handler for submit button
@@ -31,6 +32,7 @@ $(function() {
         $('.gist-input-form').hide();
         // grab value from input box
         var value = $('.input-box').val();
+        $('.input-box').val("");
         // ajax request
         request = $.ajax({
           type: "POST",
@@ -42,7 +44,6 @@ $(function() {
 
         request.done(function (data) {
           console.log('success!');
-          console.log(data)
           $('.answers').html(data.url);
         });
 
