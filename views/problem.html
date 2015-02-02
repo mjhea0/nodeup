@@ -8,7 +8,7 @@
 
 {% endmarkdown %}
 
-<div>{{exerciseBody}}</div>
+<div class="problem-desc" data-problem-id="{{ mongoID }}">{{ exerciseBody }}</div>
 
 <br>
 
@@ -25,6 +25,10 @@
 
 <br><br>
 
-<div class="answers"></div>
+<div class="answers">
+  <h3>Solutions</h3>
+  <br>
+  {{ exercise.solutions }}
+</div>
 
 {% endblock %}

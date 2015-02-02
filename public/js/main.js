@@ -30,20 +30,21 @@ $(function() {
         $('.gist-input-form').hide();
         // grab value from input box
         var value = $('.input-box').val();
+        var mongoID = $('.problem-desc').attr('data-problem-id');
         $('.input-box').val("");
         // ajax request
         request = $.ajax({
           type: "POST",
           url: "/github",
-          data: JSON.stringify({data:value}),
+          data: JSON.stringify({input:value, id:mongoID}),
           contentType: "application/json; charset=utf-8",
           dataType: "json"
         });
 
         request.done(function (data) {
           console.log('success!');
-          var gistURL = '<a href="'+data.url+'">'+data.url+'</a>';
-          $('.answers').html(gistURL);
+          // var gistURL = '<a href="'+data.url+'">'+data.url+'</a>';
+          // $('.answers').html(gistURL);
         });
 
         request.fail(function (error) {

@@ -32,3 +32,5 @@ https://github.com/paularmstrong/swig/tree/master/docs/layouts
 1. Add dummy data creation to Gulpfile
 1. Refactor into an API
 1. Handle *all* the errors
+1. Angular
+1. Flash messaging w/ connect-flash
