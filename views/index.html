@@ -2,14 +2,18 @@
 
 {% block content %}
 
+<h1>FITTER. HAPPIER. MORE PRODUCTIVE.</h1>
+
+<br>
+
 {% if !user %}
 
-  <h1>FITTER. HAPPIER. MORE PRODUCTIVE.</h1>
   <p class="lead">Swag PBR Odd Future selfies lo-fi, put a bird on it kale chips master cleanse gluten-free Neutra flexitarian gastropub Tumblr High Life roof party. Tattooed crucifix try-hard letterpress, YOLO swag bicycle rights irony locavore gluten-free. Hoodie freegan pug, letterpress Tumblr heirloom 3 wolf moon swag artisan 90's small batch fashion axe banh mi DIY. Tilde selfies photo booth, distillery cardigan keffiyeh leggings pickled Marfa. XOXO DIY Williamsburg American Apparel, forage Godard fashion axe Wes Anderson. Photo booth fanny pack 8-bit, Etsy before they sold out locavore try-hard selvage meggings narwhal. PBR before they sold out pickled Neutra ethical DIY.</p>
 
 {% else %}
 
   {% if exercises %}
+    <p>(Yo! This table is sortable. Click a field to sort.)</p>
     <table class="sortable-theme-bootstrap" data-sortable>
       <thead>
         <tr>

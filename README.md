@@ -28,8 +28,8 @@ https://github.com/paularmstrong/swig/tree/master/docs/layouts
 1. Testing
 1. Test coverage
 1. CI via Travis-CI
-1. Add tests to Gulpfile
-1. Add dummy data creation to Gulpfile
+1. Add test runner to Gulpfile
+1. Add dummy data creation/deletion to Gulpfile
 1. Refactor into an API
 1. Handle *all* the errors
 1. Angular
