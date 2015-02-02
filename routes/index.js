@@ -55,7 +55,6 @@ router.post('/github', function(req, res){
   };
 
   request(options, url, function(err, resp, body) {
-     // var body = JSON.parse(body);
      console.log(body.url);
      res.status(200).send({url:body.url});
     });
