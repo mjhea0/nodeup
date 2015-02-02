@@ -11,6 +11,7 @@ var createExercises = function(exerciseArray) {
       if (!err && exercise === null) {
         newExercise = new Exercise({
           name: exerciseName,
+          slug: exerciseName.replace(/\s/g, ''),
           difficulty: "hard",
           created: Date.now()
         });
