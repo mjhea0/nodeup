@@ -22,6 +22,7 @@ var config = require('./config/_config');
 // routes
 var mainRoutes = require('./routes/index');
 var userRoutes = require('./routes/user');
+var exerciseRoutes = require('./routes/exercise');
 
 // create express instance
 var app = express();
@@ -115,6 +116,7 @@ passport.deserializeUser(function(id, done) {
 // main routes
 app.use('/', mainRoutes);
 app.use('/', userRoutes);
+app.use('/', exerciseRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

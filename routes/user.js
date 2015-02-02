@@ -1,7 +1,6 @@
 var express = require('express'),
     router = express.Router(),
     passport = require('passport');
-    gist = require('../helpers/gist');
 
 
 router.get('/account', ensureAuthenticated, function(req, res){
