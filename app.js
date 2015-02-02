@@ -102,7 +102,9 @@ passport.deserializeUser(function(id, done) {
 
 // create dummy exercies in mongo
 var createExercises = require('./helpers/data.js');
-createExercises();
+var nameOne = "fizz buzz fizz";
+var nameTwo = "fizz buzz";
+createExercises([nameOne, nameTwo]);
 
 // main routes
 app.use('/', routes);
