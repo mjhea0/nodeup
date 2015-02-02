@@ -7,7 +7,7 @@ var express = require('express'),
 
 
 router.get('/problems/:problemID', ensureAuthenticated, function(req, res){
-  var problemMongoID = req.params.problemID
+  var problemMongoID = req.params.problemID;
   Exercise.find({_id: problemMongoID}, function(err, exercise) {
     var url = 'https://github.com/mjhea0/nodeup/blob/master/exercises/'+exercise[0].slug+'.md';
     var options = {url: url};
@@ -53,7 +53,7 @@ router.post('/github', function(req, res){
         console.log(err);
       }
     );
-    res.status(200).send({response:"success!"});
+    res.status(200).send({response:body.html_url});
   });
 
 });

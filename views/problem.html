@@ -4,7 +4,7 @@
 
 {% markdown %}
 
-## {{exercise.name}}
+## {{ exercise.name }}
 
 {% endmarkdown %}
 
@@ -27,8 +27,27 @@
 
 <div class="answers">
   <h3>Solutions</h3>
+  {% if exercise.solutions %}
+    <table class="sortable-theme-bootstrap" data-sortable>
+      <thead>
+        <tr>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ajax-solution"></tr>
+        {% for solution in exercise.solutions %}
+        <tr>
+          <td><a href="{{ solution }}">{{ solution }}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  {% else %}
+    <p>No solutions!</p>
+  {% endif %}
   <br>
-  {{ exercise.solutions }}
 </div>
 
 {% endblock %}

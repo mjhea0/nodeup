@@ -5,6 +5,7 @@ $(function() {
     console.log("hello!"); // sanity check
 
     $('.gist-input-form').hide();
+    // $('.answers').hide();
 
     // click handler for adding answer button
     $('.submit-answer-btn').on('click', function() {
@@ -43,8 +44,9 @@ $(function() {
 
         request.done(function (data) {
           console.log('success!');
-          // var gistURL = '<a href="'+data.url+'">'+data.url+'</a>';
-          // $('.answers').html(gistURL);
+          console.log(data.response);
+          var gistURL = '<td><a href="'+data.response+'">'+data.response+'</a></td>';
+          $('.ajax-solution').append(gistURL);
         });
 
         request.fail(function (error) {
