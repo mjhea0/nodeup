@@ -100,6 +100,10 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
+// create dummy exercies in mongo
+var createExercises = require('./helpers/data.js');
+createExercises();
+
 // main routes
 app.use('/', routes);
 
