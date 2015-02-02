@@ -40,9 +40,9 @@ app.set('view engine', 'html');
 
 // passport github strategy
 passport.use(new GitHubStrategy({
-    clientID: config.github_client_id,
-    clientSecret: config.github_client_secret,
-    callbackURL: config.github_callback_url
+  clientID: config.github_client_id,
+  clientSecret: config.github_client_secret,
+  callbackURL: config.github_callback_url
 },
 function(accessToken, refreshToken, profile, done) {
     // console.log(profile);
