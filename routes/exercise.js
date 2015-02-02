@@ -48,7 +48,7 @@ router.post('/github', function(req, res){
     // console.log(req.query.id);
     Exercise.findOneAndUpdate({_id: mongoID},
       {$push: {solutions: body.html_url}},
-      {safe: true, upsert: true},
+      {safe: true},
       function(err, model) {
         console.log(err);
       }
