@@ -5,25 +5,25 @@ var express = require('express'),
 
 
 router.get('/', function(req, res) {
-    res.render('index', { user: req.user });
+  res.render('index', { user: req.user });
 });
 
 router.get('/test-problem', ensureAuthenticated, function(req, res){
-    res.render('test-problem', { user: req.user });
+  res.render('test-problem', { user: req.user });
 });
 
 router.get('/account', ensureAuthenticated, function(req, res){
-    res.render('account', { user: req.user });
+  res.render('account', { user: req.user });
 });
 
 router.get('/auth/github',
-    passport.authenticate('github'),
-    function(req, res){});
+  passport.authenticate('github'),
+  function(req, res){});
 
 router.get('/auth/github/callback',
-    passport.authenticate('github', { failureRedirect: '/login' }),
-    function(req, res) {
-        res.redirect('/');
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
 });
 
 router.get('/logout', function(req, res){
@@ -32,8 +32,8 @@ router.get('/logout', function(req, res){
 });
 
 function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) { return next(); }
-    res.redirect('/');
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/');
 }
 
 router.post('/github', function(req, res){
@@ -55,8 +55,8 @@ router.post('/github', function(req, res){
   };
 
   request(options, url, function(err, resp, body) {
-     console.log(body.url);
-     res.status(200).send({url:body.url});
+      console.log(body.url);
+      res.status(200).send({url:body.url});
     });
 
 });

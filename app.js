@@ -1,4 +1,4 @@
-// dependencies
+// main dependencies
 var express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
@@ -14,6 +14,7 @@ var express = require('express'),
     flash = require('connect-flash'),
     mongoose = require('mongoose');
 
+// markdown
 var swig = require('swig'),
   extras = require('swig-extras'),
   swig = new swig.Swig();
@@ -45,29 +46,27 @@ passport.use(new GitHubStrategy({
   callbackURL: config.github_callback_url
 },
 function(accessToken, refreshToken, profile, done) {
-    // console.log(profile);
-    // console.log(accessToken);
-    User.findOne({ oauthID: profile.id }, function(err, user) {
-        if(err) { console.log(err); }
-        if (!err && user !== null) {
-            done(null, user);
+  User.findOne({ oauthID: profile.id }, function(err, user) {
+    if(err) { console.log(err); }
+    if (!err && user !== null) {
+      done(null, user);
+    } else {
+      user = new User({
+        oauthID: profile.id,
+        name: profile.displayName,
+        created: Date.now(),
+        token: accessToken
+      });
+      user.save(function(err) {
+        if(err) {
+          console.log(err);
         } else {
-            user = new User({
-                oauthID: profile.id,
-                name: profile.displayName,
-                created: Date.now(),
-                token: accessToken
-            });
-            user.save(function(err) {
-                if(err) {
-                    console.log(err);
-                } else {
-                    console.log("saving user ...");
-                    done(null, user);
-                }
-            });
+          console.log("saving user ...");
+          done(null, user);
         }
-    });
+      });
+    }
+  });
 }));
 
 // middeleware
@@ -87,17 +86,17 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// serialize and deserialize
+// serialize and deserialize user (passport)
 passport.serializeUser(function(user, done) {
-    console.log('serializeUser: ' + user._id);
-    done(null, user._id);
+  console.log('serializeUser: ' + user._id);
+  done(null, user._id);
 });
 passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user){
-        console.log(user);
-        if(!err) done(null, user);
-        else done(err, null);
-    });
+  User.findById(id, function(err, user){
+    console.log(user);
+    if(!err) done(null, user);
+    else done(err, null);
+  });
 });
 
 // create dummy exercies in mongo
@@ -111,33 +110,33 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-// error handlers
+// *** error handlers **** //
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 

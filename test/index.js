@@ -4,57 +4,55 @@ var User = require("../models/users.js");
 var db;
 
 
-
-
 describe('Project', function () {
-    it('Should exist', function (done) {
-        done();
-    });
+  it('Should exist', function (done) {
+    done();
+  });
 });
 
 
 
 describe('User', function() {
 
-    before(function(done) {
-        db = mongoose.connect('mongodb://localhost/test');
-        done();
-    });
+  before(function(done) {
+    db = mongoose.connect('mongodb://localhost/test');
+    done();
+  });
 
-    after(function(done) {
-        mongoose.connection.close();
-        done();
-    });
+  after(function(done) {
+    mongoose.connection.close();
+    done();
+  });
 
     beforeEach(function(done) {
-        var user = new User({
-            oauthID: 12345,
-            name: 'testy',
-            created: Date.now()
-        });
+      var user = new User({
+          oauthID: 12345,
+          name: 'testy',
+          created: Date.now()
+      });
 
-        user.save(function(error) {
-            if (error) console.log('error' + error.message);
-            else console.log('no error');
-            done();
-        });
+      user.save(function(error) {
+          if (error) console.log('error' + error.message);
+          else console.log('no error');
+          done();
+      });
 
     });
 
     it('find a user by username', function(done) {
-        User.findOne({ oauthID: 12345, name: "testy" }, function(err, user) {
-            user.name.should.eql('testy');
-            user.oauthID.should.eql(12345);
-            console.log("name: ", user.name);
-            console.log("oauthID: ", user.oauthID);
-            done();
-        });
+      User.findOne({ oauthID: 12345, name: "testy" }, function(err, user) {
+        user.name.should.eql('testy');
+        user.oauthID.should.eql(12345);
+        console.log("name: ", user.name);
+        console.log("oauthID: ", user.oauthID);
+        done();
+      });
     });
 
     afterEach(function(done) {
-        User.remove({}, function() {
-            done();
-        });
-     });
+      User.remove({}, function() {
+        done();
+      });
+    });
 
 });

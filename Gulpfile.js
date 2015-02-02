@@ -4,15 +4,15 @@ var gulp = require('gulp'),
 
 
 gulp.task('jshint', function() {
-    gulp.src(['app.js'])
-        .pipe(jshint())
-        .pipe(jshint.reporter());
+  gulp.src(['app.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter());
 });
 
 gulp.task('default', function() {
-    nodemon({ script: './bin/www', ext: 'html js', ignore: ['ignored.js'] })
-        .on('change', ['jshint'])
-        .on('restart', function () {
-            console.log('restarted!');
-        });
+  nodemon({ script: './bin/www', ext: 'html js', ignore: ['ignored.js'] })
+    .on('change', ['jshint'])
+    .on('restart', function () {
+        console.log('restarted!');
+    });
 });
