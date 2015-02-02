@@ -4,6 +4,7 @@ var express = require('express'),
     gist = require('../helpers/gist'),
     Exercise = require('../models/exercises.js'),
     request = require('request');
+    cheerio = require('cheerio');
 
 
 router.get('/', function(req, res) {
@@ -16,10 +17,19 @@ router.get('/', function(req, res) {
   }
 });
 
-
 router.get('/problems/:problemID', ensureAuthenticated, function(req, res){
   Exercise.find({_id:req.params.problemID}, function(err, exercise) {
-    res.render('problem', { user: req.user, exercise: exercise[0] });
+    var url = 'https://github.com/mjhea0/Projects/blob/master/README.md';
+    var options = {url: url};
+    request(options, function(err, resp, body) {
+      $ = cheerio.load(body);
+      var projects = $('.markdown-body p');
+      var randNum = Math.floor(Math.random() * projects.length);
+      var project = $(projects)[randNum];
+      var title = $(project).find('strong').text();
+      var description = $(project).text().slice(title.length + 3);
+      res.render('problem', { user: req.user, exercise: exercise[0], exerciseBody:description });
+    });
   });
 });
 

@@ -12,8 +12,7 @@ var createExercises = function(exerciseArray) {
         newExercise = new Exercise({
           name: exerciseName,
           difficulty: "hard",
-          created: Date.now(),
-          url: "N/A"
+          created: Date.now()
         });
         newExercise.save(function(err, newExercise) {
           if(err) {
