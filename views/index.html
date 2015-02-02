@@ -3,34 +3,38 @@
 {% block content %}
 
 {% if !user %}
+
   <p><a href="/auth/github" class="btn btn-default">Sign in with Github</a></p>
+
 {% else %}
+
   <p><a href="/">Home</a> | <a href="/account">Account</a> | <a href="/logout">Logout</a></p>
 
-<table class="sortable-theme-bootstrap" data-sortable>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Difficulty</th>
-      <th>Foo Bar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td><a href="/test-problem">Fizz Buzz</a></td>
-      <td>Real hard</td>
-      <td>Tak</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Fizz Buzz Fizz</td>
-      <td>Really hard</td>
-      <td>Nie</td>
-    </tr>
-  </tbody>
-</table>
+  {% if exercises %}
+    <table class="sortable-theme-bootstrap" data-sortable>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Difficulty</th>
+          <th>Foo Bar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for exercise in exercises %}
+        <tr>
+          <td>{{loop.index}}</td>
+          <td><a href="/test-problem">{{ exercise.name }}</a></td>
+          <td>{{ exercise.difficulty }}</td>
+          <td>Tak</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  {% else %}
+    <p>No exercises!</p>
+  {% endif %}
 
 {% endif %}
 

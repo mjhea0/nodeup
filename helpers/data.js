@@ -1,4 +1,4 @@
-// helpers for creating database data
+// helpers working with mongo
 
 var Exercise = require('../models/exercises.js');
 
@@ -27,7 +27,7 @@ var createExercises = function(exerciseArray) {
 
   });
 
-  };
+};
 
 module.exports = createExercises;
 

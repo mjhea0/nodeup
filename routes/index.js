@@ -5,8 +5,16 @@ var express = require('express'),
 
 
 router.get('/', function(req, res) {
-  res.render('index', { user: req.user });
+  if (req.user) {
+    var Exercise = require('../models/exercises.js');
+    Exercise.find({}, function(err, exercises) {
+      res.render('index', { user: req.user, exercises: exercises});
+    });
+  } else {
+    res.render('index', { user: req.user });
+  }
 });
+
 
 router.get('/test-problem', ensureAuthenticated, function(req, res){
   res.render('test-problem', { user: req.user });
