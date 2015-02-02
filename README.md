@@ -10,6 +10,15 @@ An app to manage daily coding warmup exercises. Powered by Node. Inspired by DBC
 1. User submits answer with the Github Gist ID
 1. Once the user clicks the submit button, s/he can view all other submissions
 
+## Schema
+
+1. One *user* can post multiple *solutions* (1:M)
+1. One *problem* can have multiple *solutions* (1:M)
+
+## Templating Documentation
+
+https://github.com/paularmstrong/swig/tree/master/docs/layouts
+
 ## To do
 
 1. Convert to SQL/Postgres
@@ -19,3 +28,5 @@ An app to manage daily coding warmup exercises. Powered by Node. Inspired by DBC
 1. Testing
 1. Test coverage
 1. CI via Travis-CI
+1. Add tests to Gulpfile
+1. Add dummy data creation to Gulpfile

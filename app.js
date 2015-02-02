@@ -1,3 +1,5 @@
+// *** config *** //
+
 // main dependencies
 var express = require('express'),
     path = require('path'),
@@ -14,30 +16,55 @@ var express = require('express'),
     flash = require('connect-flash'),
     mongoose = require('mongoose');
 
-// markdown
-var swig = require('swig'),
-  extras = require('swig-extras'),
-  swig = new swig.Swig();
-extras.useTag(swig, 'markdown');
-
-// config
+// config file
 var config = require('./config/_config');
 
 // routes
-var routes = require('./routes/index');
+var mainRoutes = require('./routes/index');
+var userRoutes = require('./routes/user');
 
 // create express instance
 var app = express();
 
-// connect to the database
-mongoose.connect('mongodb://localhost/nodeup');
-var User = require('./models/users.js');
+
+// *** templating *** //
+
+// jinga templating
+var swig = require('swig'),
+  extras = require('swig-extras'),
+  swig = new swig.Swig();
+extras.useTag(swig, 'markdown');
 
 // view engine setup for templates
 app.engine('html', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
+
+// *** middleware *** //
+
+// middeleware
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(methodOverride());
+app.use(flash());
+app.use(session({
+  secret: 'keyboard cat in the hat',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+// *** passport / user auth *** //
+
+// connect to the database
+mongoose.connect('mongodb://localhost/nodeup');
+var User = require('./models/users.js');
 
 // passport github strategy
 passport.use(new GitHubStrategy({
@@ -69,23 +96,6 @@ function(accessToken, refreshToken, profile, done) {
   });
 }));
 
-// middeleware
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(methodOverride());
-app.use(flash());
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
-
-
 // serialize and deserialize user (passport)
 passport.serializeUser(function(user, done) {
   console.log('serializeUser: ' + user._id);
@@ -99,14 +109,12 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-// create dummy exercies in mongo
-var createExercises = require('./helpers/data.js');
-var nameOne = "fizz buzz fizz";
-var nameTwo = "fizz buzz";
-createExercises([nameOne, nameTwo]);
+
+// *** routes *** //
 
 // main routes
-app.use('/', routes);
+app.use('/', mainRoutes);
+app.use('/', userRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -115,7 +123,8 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// *** error handlers **** //
+
+// *** error handlers *** //
 
 // development error handler
 // will print stacktrace
@@ -138,6 +147,16 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+// *** helper functions *** //
+
+
+// create dummy exercies in mongo
+var createExercises = require('./helpers/data.js');
+var nameOne = "fizz buzz fizz";
+var nameTwo = "fizz buzz";
+createExercises([nameOne, nameTwo]);
 
 
 module.exports = app;

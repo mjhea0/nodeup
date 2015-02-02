@@ -1,7 +1,5 @@
 // custom scripts
 
-
-
 $(function() {
 
     console.log("hello!"); // sanity check
@@ -44,7 +42,8 @@ $(function() {
 
         request.done(function (data) {
           console.log('success!');
-          $('.answers').html(data.url);
+          var gistURL = '<a href="'+data.url+'">'+data.url+'</a>';
+          $('.answers').html(gistURL);
         });
 
         request.fail(function (error) {

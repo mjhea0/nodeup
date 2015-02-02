@@ -5,7 +5,8 @@ var Exercise = mongoose.model('exercises', {
   name: String,
   difficulty: String,
   created: Date,
-  url: String
+  url: String,
+  solutions: [String]
 });
 
 module.exports = Exercise;
