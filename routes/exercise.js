@@ -37,10 +37,16 @@ router.post('/github', function(req, res){
   };
 
   request(options, url, function(err, resp, body) {
-      console.log(body.html_url);
-      // add solution to database
-      res.status(200).send({url:body.html_url});
-    });
+    console.log(body.html_url);
+    Exercise.findOneAndUpdate({_id: req.query.id},
+      {$push: {solutions: body.html_url}},
+      {safe: true, upsert: true},
+      function(err, model) {
+        console.log(err);
+      }
+    );
+    res.status(200).send({url:body.html_url});
+  });
 
 });
 
@@ -49,8 +55,5 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/');
 }
 
-function addGist() {
-  // add solution to the exercises collection
-}
 
 module.exports = router;
