@@ -12,46 +12,6 @@
 
 <br>
 
-<div class="submit-answer-btn">
-  <button class="btn btn-default" type="submit">Add your answer</button>
-  <br><br>
-  <p>Too difficult? Go <a href="/">back</a>.</p>
-</div>
-
-<form class="gist-input-form">
-  <div class="form-group">
-    <input type="text" class="form-control input-box" placeholder="Enter the gist id">
-  </div>
-  <div>Example - ca266f402a7a90a2e785</div>
-  <button type="submit" class="btn btn-default submit-btn">Submit</button>
-  <button type="submit" class="btn btn-default cancel-btn">Cancel</button>
-</form>
-
-<br><br>
-
-<div class="answers">
-  <h3>Solutions</h3>
-  {% if exercise.solutions %}
-    <table class="sortable-theme-bootstrap" data-sortable>
-      <thead>
-        <tr>
-          <th>URL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="ajax-solution"></tr>
-        {% for solution in exercise.solutions %}
-        <tr>
-          <td><a href="{{ solution }}">{{ solution }}</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-  {% else %}
-    <p>No solutions!</p>
-  {% endif %}
-  <br>
-</div>
+<p>Too difficult? Go <a href="/">back</a>.</p>
 
 {% endblock %}

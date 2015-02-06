@@ -4,11 +4,10 @@ An app to manage daily coding warmup exercises. Powered by Node. Inspired by DBC
 
 ## User Workflow
 
-1. User logins/authenticates via Github
+1. User authenticates via Github
+1. User pays via Stripe
 1. Upon login, the end user is presented with a list of exercises (categorized, easily sortable)
 1. When the user clicks a specific exercise, the problem is presented
-1. User submits answer with the Github Gist ID
-1. Once the user clicks the submit button, s/he can view all other submissions
 
 ## Schema
 
