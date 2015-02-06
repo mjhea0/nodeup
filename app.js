@@ -156,14 +156,9 @@ app.use(function(err, req, res, next) {
 
 // create dummy exercies in mongo
 var createExercises = require('./helpers/data.js');
-var nameOne = "fizz buzz fizz";
-var nameTwo = "fizz buzz";
-var solutionOne = 'https://gist.github.com/mjhea0/c6a3093572b74d46b9d0';
-var solutionTwo = 'https://gist.github.com/mjhea0/ca266f402a7a90a2e785';
-createExercises([
-  {'name':nameOne, 'solution': [solutionOne, solutionTwo]},
-  {'name':nameTwo, 'solution': [solutionOne, solutionTwo]}
-]);
+var nameOne = "Find PI to the Nth Digit";
+var nameTwo = "Fibonacci Sequence";
+createExercises([{'name':nameOne}, {'name':nameTwo}]);
 
 
 module.exports = app;

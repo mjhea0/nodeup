@@ -13,7 +13,6 @@ var createExercises = function(exerciseArray) {
 function findThenCreate(exerciseObject) {
 
   var exerciseName = exerciseObject.name;
-  var exerciseSolution = exerciseObject.solution;
 
   Exercise.findOne({ name: exerciseName }, function(err, exercise) {
     if(err) { console.log(err); }
@@ -22,8 +21,7 @@ function findThenCreate(exerciseObject) {
         name: exerciseName,
         slug: exerciseName.replace(/\s/g, ''),
         difficulty: "hard",
-        created: Date.now(),
-        solutions: exerciseSolution
+        created: Date.now()
       });
       newExercise.save(function(err, newExercise) {
         if(err) {

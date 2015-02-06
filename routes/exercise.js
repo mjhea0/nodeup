@@ -18,8 +18,7 @@ router.get('/problems/:problemID', ensureAuthenticated, function(req, res){
       res.render('problem', {
         user: req.user,
         exercise: exercise[0],
-        exerciseBody:description,
-        mongoID:problemMongoID
+        exerciseBody:description
       });
     });
   });
