@@ -12,7 +12,7 @@ An app to manage daily coding warmup exercises. Powered by NodeJs.
 1. Upon payment, the end user is presented with a list of ALL exercises (categorized, easily sortable)
 1. When the user clicks a specific exercise, the problem is presented
 
-> If user does not pay, s/he can only view 5 exercises
+> If user does not pay, s/he can only view 5 exercises. And is reminded via a modal to upgrade.
 
 ## Templating Documentation
 
