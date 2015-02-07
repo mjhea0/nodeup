@@ -34,30 +34,38 @@
 
 {% else %}
 
-  {% if exercises %}
-    <p>(Yo! This table is sortable. Click a field to sort.)</p>
-    <table class="sortable-theme-bootstrap" data-sortable>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Difficulty</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for exercise in exercises %}
-        <tr>
-          <td>{{ loop.index }}</td>
-          <td><a href="/problems/{{ exercise.id }}">{{ exercise.name }}</a></td>
-          <td>{{ exercise.difficulty }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <div class="row">
 
-  {% else %}
-    <p>No exercises!</p>
-  {% endif %}
+    <div class="col-md-8 col-md-offset-2">
+
+      {% if exercises %}
+        <p>(Yo! This table is sortable. Click a field to sort.)</p>
+        <table class="sortable-theme-bootstrap" data-sortable>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Difficulty</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for exercise in exercises %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td><a href="/problems/{{ exercise.id }}">{{ exercise.name }}</a></td>
+              <td>{{ exercise.difficulty }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      {% else %}
+        <p>No exercises!</p>
+      {% endif %}
+
+    </div>
+
+  </div>
 
 {% endif %}
 
