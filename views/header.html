@@ -17,6 +17,8 @@
       {% if !user %}
         <li><a href="/auth/github"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign in with Github</a></li>
       {% else %}
+        <li><a>Welcome, <em>{{ user.name }}</em>!</a></li>
+        <li><a href="/">Exercises</a></li>
         <li><a href="/account">Account</a></li>
         <li><a href="/logout">Logout</a></li>
       {% endif %}

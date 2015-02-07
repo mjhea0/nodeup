@@ -16,28 +16,66 @@
     </div>
   </div>
 
+  <br>
+
   <div class="container">
 
-    <h2>Sample Problem: Array Rotation</h2>
+    <div class="row" style="text-align: center;">
+      <div class="col-md-3">
+        <img class="img-circle" src="https://studentrnd.org/assets/img/codeday-square.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+        <h3>Heading</h3>
+      </div>
+      <div class="col-md-3">
+        <img class="img-circle" src="https://studentrnd.org/assets/img/codeday-square.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+        <h3>Heading</h3>
+      </div>
+      <div class="col-md-3">
+        <img class="img-circle" src="https://studentrnd.org/assets/img/codeday-square.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+        <h3>Heading</h3>
+      </div>
+      <div class="col-md-3">
+        <img class="img-circle" src="https://studentrnd.org/assets/img/codeday-square.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+        <h3>Heading</h3>
+      </div>
+    </div>
 
-    <hr>
+    <br><br>
 
-    <p class="lead">Rotate a given array to the right by n steps.For example: Given <code>[1, 2, 3]</code> and <code>n = 1</code>, you should return <code>[3, 1, 2]</code> Each step, the last element in the array is moved to the front of the array, and the rest are shifted right. Another example: Given <code>[1, 2, 3, 4, 5]</code> and <code>n = 3</code>, you should return <code>[3, 4, 5, 1, 2]</code></p>
+    <div class="row">
+
+      <h2>Sample Problem: <em>Array Rotation</em></h2>
+
+      <hr>
+
+      <p class="lead"><strong>Rotate a given array to the right by n steps.</strong> After each step, the last element in the array is moved to the front of the array, and the rest of the elements are shifted right. Examples:</p>
+      <p>
+        <ul>
+          <li class="lead">Given <code>[1, 2, 3]</code> and <code>n = 1</code>, you should return <code>[3, 1, 2]</code>.</li>
+          <li class="lead">Given <code>[1, 2, 3, 4, 5]</code> and <code>n = 3</code>, you should return <code>[3, 4, 5, 1, 2]</code>.</li>
+        </ul>
+      <p>
+
+    </div>
 
   </div>
 
 {% else %}
 
-  <div class="row">
+  <div class="jumbotron"></div>
 
-    <div class="col-md-8 col-md-offset-2">
+  <div class="container">
+
+    <div class="row">
+
+      <h1>All Exercises</h1>
+
+      <br><br>
 
       {% if exercises %}
-        <p>(Yo! This table is sortable. Click a field to sort.)</p>
         <table class="sortable-theme-bootstrap" data-sortable>
           <thead>
             <tr>
-              <th>#</th>
+              <th data-sorted="true" data-sorted-direction="descending">#</th>
               <th>Name</th>
               <th>Difficulty</th>
             </tr>
@@ -54,7 +92,7 @@
         </table>
 
       {% else %}
-        <p>No exercises!</p>
+        <p>No exercises! Come back tomorrow.</p>
       {% endif %}
 
     </div>

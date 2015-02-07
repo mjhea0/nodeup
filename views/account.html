@@ -4,22 +4,25 @@
 
 {% block content %}
 
-<h3>{{ user.name }}</h3>
+<div class="jumbotron"></div>
 
-<br>
+<div class="container">
 
-<div>
-  <ul>
-    <li>Mongo _id: {{ user.id }}</li>
-    <li>oauthID: {{ user.oauthID }}</li>
-    <li>Name: {{ user.name }}</li>
-    <li>Created: {{ user.created.getMonth()+1 }}/{{ user.created.getDate() }}/{{ user.created.getFullYear() }}</li>
-    <li>Token: {{ user.token }}</li>
-    <li>Paid: {{ user.paid }}</li>
-    <li>Admin: {{ user.admin }}</li>
-  </ul>
+  <h3>{{ user.name }}</h3>
+
+  <br>
+
+  <div>
+    <ul>
+      <li>Mongo _id: {{ user.id }}</li>
+      <li>oauthID: {{ user.oauthID }}</li>
+      <li>Name: {{ user.name }}</li>
+      <li>Created: {{ user.created.getMonth()+1 }}/{{ user.created.getDate() }}/{{ user.created.getFullYear() }}</li>
+      <li>Paid: {{ user.paid }}</li>
+      <li>Admin: {{ user.admin }}</li>
+    </ul>
+  </div>
+
 </div>
 
 {% endblock %}
-
-module.exports = User;

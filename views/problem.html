@@ -4,19 +4,24 @@
 
 {% block content %}
 
+<div class="jumbotron"></div>
+
+<div class="container">
+
 {% markdown %}
 
-## {{ exercise.name }}
+# {{ exercise.name }}
 
 {% endmarkdown %}
 
-<hr>
+  <hr>
 
+  <div class="lead">{{ exerciseBody }}</div>
 
-<div class="problem-desc">{{ exerciseBody }}</div>
+  <br>
 
-<br>
+  <p>Too difficult? Go <a href="/">back</a> to the exercises.</p>
 
-<p>Too difficult? Go <a href="/">back</a> to the exercises.</p>
+</div>
 
 {% endblock %}
