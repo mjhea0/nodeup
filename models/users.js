@@ -7,7 +7,8 @@ var User = mongoose.model('users', {
   created: Date,
   token: String,
   paid: { type: Boolean, default: false },
-  admin: { type: Boolean, default: false }
+  admin: { type: Boolean, default: false },
+  stripeToken: String,
 });
 
 module.exports = User;

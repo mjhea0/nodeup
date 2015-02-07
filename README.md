@@ -26,7 +26,9 @@ https://github.com/paularmstrong/swig/tree/master/docs/layouts
 1. CSS/JS minification for production (via gulpfile)
 1. Theme/Make pretty
 1. Add unit tests
-1. Test coverage
+1. Add integration tests
+1. Mock Stripe
+1. Test coverage (with istanbul)
 1. CI via Travis-CI
 1. Add test runner to Gulpfile
 1. Add dummy data creation/deletion to Gulpfile
